@@ -140,7 +140,7 @@ class Mpeg7PreProcessing:
 		cv2.imshow('threshold', threshold)
 		cv2.imshow('outline', outline)
 		cv2.imshow('normilazed', normilazed)
-		cv2.waitKey(0)	
+		cv2.waitKey(0)
 		cv2.destroyAllWindows()
 
 	def getTheBestContour(self, imgPath):

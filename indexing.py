@@ -9,7 +9,7 @@ from zernike_moments import ZernikeMoments
 #from PIL import Image, ImageOps
 from my_pre_processing import Mpeg7PreProcessing
 import numpy as np
-#import argparse
+import pandas as pd
 import cv2
 import pickle as cp
 import glob
@@ -36,8 +36,9 @@ imagesInFolder = glob.glob(imageFinder)
 imageMomentsFile = 'index.pkl'
 imageSize = 180
 imageRadius = 180
-zernikeDegree = 16
+zernikeDegree = 32
 
+# initialize our dictionary
 index = {}
 
 qtd = len(imagesInFolder)

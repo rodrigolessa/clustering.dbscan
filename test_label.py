@@ -1,4 +1,4 @@
-﻿from sklearn import metrics
+from sklearn import metrics
 from sklearn.cluster import DBSCAN
 from sklearn.preprocessing import StandardScaler
 from sklearn.datasets.samples_generator import make_blobs
@@ -26,22 +26,15 @@ imageMomentsFile = 'index.pkl'
 with open(imageMomentsFile, 'rb') as pickle_file:
     sparse_matrix = cp.load(pickle_file)
 
+print('')
+print('Names of the images by goups')
+names = [t.split('\\')[3].split('-')[0] for t in imagesInFolder]
+print(names[:30])
+
 # Original labels
+# Cria um array com uma sequencia numérica 
+# atribuindo um valor para cada nome único nas imagens
 labels_true = pd.factorize([k.split('-')[0] for k in sparse_matrix.keys()])[0]
 
-# Convert the dict to a numpy array
-X = np.array(list(sparse_matrix.values()))
-
-# O data set de imagemMPEG7 possui 69 grupos
-dbscan = DBSCAN(algorithm='auto', eps=0.02, metric='cosine', min_samples=4).fit(X)
-
-# Return sequencial labels
-labels = dbscan.labels_
-
-# pd = pandas
-
-#adjusted_rand_score(labels, predict)
-#adjusted_mutual_info_score(labels, predict)
-
-# #############################################################################
-# Plot result
+print('')
+print(labels_true[:30])
