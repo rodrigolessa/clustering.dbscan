@@ -21,6 +21,7 @@ print ("Matplotlib Version", matplotlib.__version__)
 
 centers = [[1, 1], [-1, -1], [1, -1]]
 
+# The true cluster
 X, labels_true = make_blobs(n_samples=750, centers=centers, cluster_std=0.4, random_state=0)
 
 print('')
@@ -61,6 +62,7 @@ core_samples_mask = np.zeros_like(db.labels_, dtype=bool)
 
 core_samples_mask[db.core_sample_indices_] = True
 
+# The predicted cluster
 labels = db.labels_
 
 print('')
@@ -78,6 +80,9 @@ print('Estimated number of noise points: %d' % n_noise_)
 print("Homogeneity: %0.3f" % metrics.homogeneity_score(labels_true, labels))
 print("Completeness: %0.3f" % metrics.completeness_score(labels_true, labels))
 print("V-measure: %0.3f" % metrics.v_measure_score(labels_true, labels))
+# The Rand Index computes a similarity measure between two clusterings by considering 
+# all pairs of samples and counting pairs that are assigned in the same 
+# or different clusters in the predicted and true clusterings.
 print("Adjusted Rand Index: %0.3f"
       % metrics.adjusted_rand_score(labels_true, labels))
 print("Adjusted Mutual Information: %0.3f"
