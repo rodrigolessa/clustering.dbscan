@@ -1,4 +1,4 @@
-from zernike_moments import ZernikeMoments
+﻿from zernike_moments import ZernikeMoments
 from scipy.spatial import distance as dist
 import numpy as np
 import pandas as pd
@@ -15,7 +15,7 @@ imageFolderConverted = '{}\\{}'.format(imageFolder, 'converted')
 imageFolderThreshold = '{}\\{}'.format(imageFolder, 'threshold')
 imageExtension = '.png'
 imageFinder = '{}\\*{}'.format(imageFolderConverted, imageExtension)
-imageDebugName = 'apple-1' #'butterfly-1'
+imageDebugName = 'butterfly-1'
 imageDebug = '{}{}'.format(imageDebugName, imageExtension)
 imagesInFolder = glob.glob(imageFinder)
 imageMomentsFile = 'index.pkl'

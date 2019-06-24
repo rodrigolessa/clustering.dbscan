@@ -36,7 +36,7 @@ imagesInFolder = glob.glob(imageFinder)
 imageMomentsFile = 'index.pkl'
 imageSize = 180
 imageRadius = 180
-zernikeDegree = 32
+zernikeDegree = 16
 
 # initialize our dictionary
 index = {}

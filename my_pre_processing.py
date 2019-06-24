@@ -174,7 +174,19 @@ class Mpeg7PreProcessing:
 
 		# The outline is drawn as a filled in mask with white pixels:
 		for cnt in contours:
+
 			if(cv2.contourArea(cnt) > 0):
+
+				# cv2.arcLength and cv2.approxPolyDP. 
+				# These methods are used to approximate the polygonal curves of a contour.
+				#peri = cv2.arcLength(cnt, True)
+
+				# Level of approximation precision. 
+				# In this case, we use 2% of the perimeter of the contour.
+				# * The Ramer–Douglas–Peucker algorithm, also known as the Douglas–Peucker algorithm and iterative end-point fit algorithm, 
+				# is an algorithm that decimates a curve composed of line segments to a similar curve with fewer point
+				#approx = cv2.approxPolyDP(cnt, 0.02 * peri, True)
+
 				cv2.drawContours(outline, [cnt], -1, 255, -1)
 
 		if (outline.any()):

@@ -13,8 +13,8 @@ import imutils
 import os
 import sys
 
-# Check the Matplotlib Version 
-print ("Matplotlib Version", matplotlib.__version__)
+# Check the Matplotlib Version
+print("Matplotlib Version", matplotlib.__version__)
 
 # #############################################################################
 # Generate sample data
@@ -34,29 +34,30 @@ print('')
 print('Elemento da posição 100:')
 print(X[99])
 print('')
-print('{} - Features em cada elemento'.format(len(X[0])))
+#print('{} - Features em cada elemento'.format(len(X[0])))
 print('')
-print('{} - Total de elementos na matriz'.format(len(X)))
+#print('{} - Total de elementos na matriz'.format(len(X)))
 
 # The idea behind StandardScaler is that it will transform your data 
 # such that its distribution will have a mean value 0 and standard deviation of 1. 
 # Given the distribution of the data, 
 # each value in the dataset will have the sample mean value subtracted, 
 # and then divided by the standard deviation of the whole dataset.
-scaled = StandardScaler().fit_transform(X)
+X = StandardScaler().fit_transform(X)
 
 print('')
 print('Exemplo da matriz redistribuida por um valor médio:')
-print(scaled[:5])
+#print(scaled[:5])
 
 print('')
 print('Elemento da posição 100:')
-print(scaled[99])
+#print(scaled[99])
 
 # #############################################################################
 # Compute DBSCAN
 
-db = DBSCAN(algorithm='auto', eps=0.3, metric='cosine', min_samples=8).fit(scaled)
+#db = DBSCAN(algorithm='auto', eps=0.3, metric='cosine', min_samples=8).fit(scaled)
+db = DBSCAN(eps=0.3, min_samples=10).fit(X)
 
 core_samples_mask = np.zeros_like(db.labels_, dtype=bool)
 
@@ -65,9 +66,9 @@ core_samples_mask[db.core_sample_indices_] = True
 # The predicted cluster
 labels = db.labels_
 
-print('')
-print('5 primeiros Labels agrupados pelo DBSCAN:')
-print ('{}, do tipo: {}'.format(labels[:5], labels.dtype))
+#print('')
+#print('5 primeiros Labels agrupados pelo DBSCAN:')
+#print ('{}, do tipo: {}'.format(labels[:5], labels.dtype))
 
 # Number of clusters in labels, ignoring noise if present.
 n_clusters_ = len(set(labels)) - (1 if -1 in labels else 0)
